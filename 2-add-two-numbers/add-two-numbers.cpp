@@ -14,11 +14,8 @@ public:
         ListNode* dummyHead = new ListNode(0);
         ListNode* curr = dummyHead;
         int carry = 0;
-
-        // Loop runs as long as there's a digit to process or a leftover carry
         while (l1 != nullptr || l2 != nullptr || carry != 0) {
             int sum = carry;
-
             if (l1 != nullptr) {
                 sum += l1->val;
                 l1 = l1->next;
@@ -27,14 +24,12 @@ public:
                 sum += l2->val;
                 l2 = l2->next;
             }
-
-            carry = sum / 10;            // Extract the carry
-            curr->next = new ListNode(sum % 10); // Create new node with remainder
-            curr = curr->next;           // Advance the pointer
+            carry = sum / 10;            
+            curr->next = new ListNode(sum % 10); 
+            curr = curr->next;         
         }
-
         ListNode* result = dummyHead->next;
-        delete dummyHead; // Free the dummy head memory
+        delete dummyHead; 
         return result;
     }
 };
